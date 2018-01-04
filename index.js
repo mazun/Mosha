@@ -1,11 +1,15 @@
-const render = (canvas, image, x, y, drawImage) => {
+const render = (canvas, image, x, y, size, drawImage) => {
     const ctx = canvas.getContext('2d');
+    const width = image.width * (size / 100.0);
+    const height = image.height * (size / 100.0);
 
     canvas.width = image.width;
-    canvas.height = image.height;
+    canvas.height = image.height;    
 
-    canvas.style.width = image.width + 'px';
-    canvas.style.height = image.height + 'px';
+    canvas.style.width = width + 'px';
+    canvas.style.height = height + 'px';
+
+    ctx.lineWidth = 1 * (100.0 / size);
 
     if(drawImage) {
         ctx.drawImage(image, 0, 0);
@@ -33,18 +37,21 @@ let currentImage;
 const updateCanvas = () => {
     const xInput = document.getElementById('x');
     const yInput = document.getElementById('y');
+    const sizeInput = document.getElementById('size');
     const x = Number(xInput.value);
     const y = Number(yInput.value);
+    const size = Number(sizeInput.value);
 
     document.getElementById('xValue').innerHTML = String(x);
     document.getElementById('yValue').innerHTML = String(y);
+    document.getElementById('sizeValue').innerHTML = String(size);
 
     if (currentImage) {
         const canvas = document.getElementById('canvas');
         const line = document.getElementById('line');
         line.style.display = 'block';
-        render(canvas, currentImage, x, y, true);
-        render(line, currentImage, x, y, false);
+        render(canvas, currentImage, x, y, size, true);
+        render(line, currentImage, x, y, size, false);
     }
 };
 
