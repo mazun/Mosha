@@ -79,6 +79,7 @@ const dragend = event => {
 const handleDraggedFile = event => {
     const file = event.dataTransfer.files[0];
     handleFile(file);
+    event.preventDefault();
 };
 
 const handleFile = url => {
@@ -98,10 +99,11 @@ const handleFile = url => {
 }
 
 const handlePaste = pasteEvent => {
-    const item = pasteEvent.clipboardData.items[0];
-
-    if (item.type.indexOf("image") === 0) {
-        handleFile(item.getAsFile());
+    for (item of pasteEvent.clipboardData.items) {
+        if (item.type.indexOf("image") === 0) {
+            handleFile(item.getAsFile());
+            return;
+        }
     }
 }
 
