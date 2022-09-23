@@ -46,6 +46,9 @@ const updateCanvas = () => {
     document.getElementById('yValue').innerHTML = String(y);
     document.getElementById('sizeValue').innerHTML = String(size);
 
+    const url = new URL(window.location.href);
+    window.history.replaceState(null, null, `${url.pathname}?x=${x}&y=${y}&size=${size}`);
+
     if (currentImage) {
         const canvas = document.getElementById('canvas');
         const line = document.getElementById('line');
@@ -109,6 +112,24 @@ const init = () => {
     canvas.ondragover = dragover;
     canvas.ondrop = handleDraggedFile;
     document.onpaste = handlePaste;
+
+    const xInput = document.getElementById('x');
+    const yInput = document.getElementById('y');
+    const sizeInput = document.getElementById('size');
+
+    const url = new URL(window.location.href);
+    const x = url.searchParams.get("x");
+    if (x) {
+        xInput.value = x;
+    }
+    const y = url.searchParams.get("y");
+    if (y) {
+        yInput.value = y;
+    }
+    const size = url.searchParams.get("size");
+    if (size) {
+        sizeInput.value = size;
+    }
 
     updateCanvas();
 }
