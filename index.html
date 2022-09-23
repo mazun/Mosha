@@ -1,39 +1,41 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>補助線入奴</title>
-        <link rel="stylesheet" href="index.css">
-    </head>
 
-    <body onload="init()">
-        <div>
-            <span>縦線</span>
-            <input type="range" min="0" max="10" id="x" name="x" value="1" oninput="updateCanvas()">
-            <span id="xValue"></span>
-        </div>
+<head>
+    <title>補助線入奴</title>
+    <link rel="stylesheet" href="index.css">
+</head>
 
-        <div>
-            <span>横線</span>
-            <input type="range" min="0" max="10" id="y" name="y" value="1" oninput="updateCanvas()">
-            <span id="yValue"></span>
-        </div>
+<body onload="init()">
+    <div>
+        <span>縦線</span>
+        <input type="range" min="0" max="10" id="x" name="x" value="1" oninput="updateCanvas()">
+        <span id="xValue"></span>
+    </div>
 
-        <div>
-            <span>サイズ</span>
-            <input type="range" min="0" max="200" id="size" name="size" value="100" oninput="updateCanvas()">
-            <span id="sizeValue"></span>
-        </div>
+    <div>
+        <span>横線</span>
+        <input type="range" min="0" max="10" id="y" name="y" value="1" oninput="updateCanvas()">
+        <span id="yValue"></span>
+    </div>
 
-        <div>
-            ↓枠内に画像をドラッグアンドドロップして右クリで保存
-        </div>
+    <div>
+        <span>サイズ</span>
+        <input type="range" min="0" max="200" id="size" name="size" value="100" oninput="updateCanvas()">
+        <span id="sizeValue"></span>
+    </div>
 
-        <canvas id="canvas">
-        </canvas>
+    <div>
+        ↓枠内に画像をドラッグアンドドロップorクリップボードからペーストして右クリで保存
+    </div>
 
-        <canvas id="line">
-        </canvas>
+    <canvas id="canvas">
+    </canvas>
 
-        <script src="index.js"></script>
-    </body>
+    <canvas id="line">
+    </canvas>
+
+    <script src="index.js"></script>
+</body>
+
 </html>
